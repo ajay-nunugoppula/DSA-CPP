@@ -112,3 +112,27 @@ void DeleteAtEnd(Node* &head){
     free(temp2); 
 }
 ```
+
+## Deletion at Position
+```cpp
+void DeleteAtPos(Node* &head,int pos){
+    if(pos <=1){
+        DeleteAtBegin(head);
+        return;
+    }
+    int count=1;
+    Node* temp = head;
+    while(count<pos-1){
+        temp=temp->next;
+        count++;
+    }
+    if(temp == NULL){
+        DeleteAtEnd(head);
+        return;
+    }
+    Node* temp2 =temp->next;
+    temp->next=temp2->next;
+    cout<< "Deleted at Pos: " << pos << " Value: "<< temp2->data << endl;
+    free(temp2);
+}
+```
