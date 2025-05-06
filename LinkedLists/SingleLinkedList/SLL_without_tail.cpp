@@ -123,6 +123,6 @@ int main(){
     PrintLL(head);
     DeleteAtEnd(head);
     PrintLL(head);
-    DeleteAtPos(head,2);
+    DeleteAtPos(head,1);
     PrintLL(head);
 }
