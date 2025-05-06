@@ -61,6 +61,7 @@ void InsertAtEnd(Node* &head,int data){
 void InsertAtPos(Node* &head,int pos,int data){
     if(pos <=1){
         InsertAtBegin(head,data);
+        return;
     }
     int count=1;
     Node* temp = head;
