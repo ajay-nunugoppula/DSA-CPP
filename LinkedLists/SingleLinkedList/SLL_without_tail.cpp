@@ -1,6 +1,6 @@
-# Node Creation for SLL
+#include <iostream>
+using namespace std;
 
-```
 class Node{
     public:
     int data;
@@ -12,17 +12,7 @@ class Node{
         this->next=NULL;
     }
 };
-```
 
-## LinkedList Initialisation
-
-```cpp
-Node* head = new Node(10);
-```
-
-## Printing Linkedlist Element
-
-```cpp
 void PrintLL(Node* &head){
     Node* temp=head;
     cout<< "Linked List: ";
@@ -32,21 +22,15 @@ void PrintLL(Node* &head){
     }
     cout<< "NULL" << endl;
 }
-```
 
-## Insertion at Begin
-
-```cpp
 void InsertAtBegin(Node* &head,int data){
     Node* temp=new Node(data);
     temp->next=head;
     head=temp;
 }
-```
 
-## Insertion At End
 
-```cpp
+
 void InsertAtEnd(Node* &head,int data){
     Node* NewNode = new Node(data);
     Node* temp=head;
@@ -55,9 +39,7 @@ void InsertAtEnd(Node* &head,int data){
     }
     temp->next=NewNode;
 }
-```
-## Insertion at Given Position
-```cpp
+
 void InsertAtPos(Node* &head,int pos,int data){
     if(pos <=1){
         InsertAtBegin(head,data);
@@ -76,11 +58,7 @@ void InsertAtPos(Node* &head,int pos,int data){
     NewNode->next=temp->next;
     temp->next=NewNode;
 }
-```
 
-## Deletion at Begin
-
-```cpp
 void DeleteAtBegin(Node* &head){
     if(head == NULL){
         cout << "List is Empty.. " << endl;
@@ -91,11 +69,7 @@ void DeleteAtBegin(Node* &head){
     cout<< "Deleted: "<< temp->data <<endl;
     free(temp);
 }
-```
 
-## Deletion at End
-
-```cpp
 void DeleteAtEnd(Node* &head){
     if(head == NULL){
         cout << "List is Empty.. " << endl;
@@ -110,4 +84,21 @@ void DeleteAtEnd(Node* &head){
     cout<< "Deleted: "<< temp2->data <<endl;
     free(temp2); 
 }
-```
+
+int main(){
+    Node* head = new Node(10);
+    PrintLL(head);
+    InsertAtBegin(head,20);
+    PrintLL(head);
+    InsertAtBegin(head,30);
+    PrintLL(head);
+    InsertAtEnd(head,40);
+    PrintLL(head);
+    InsertAtPos(head,3,50);
+    PrintLL(head);
+
+    DeleteAtBegin(head);
+    PrintLL(head);
+    DeleteAtEnd(head);
+    PrintLL(head);
+}
