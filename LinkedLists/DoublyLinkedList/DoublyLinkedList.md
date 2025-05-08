@@ -83,7 +83,7 @@ void InsertAtPos(Node* &head,Node* &tail,int data,int pos){
        count++;
     }
 
-    if(temp == NULL){
+    if(temp == NULL || temp->next == NULL){
         InsertAtEnd(head,tail,data);
         return;
     }
@@ -92,5 +92,77 @@ void InsertAtPos(Node* &head,Node* &tail,int data,int pos){
     NewNode->next=temp->next;
     temp->next->prev=NewNode;
     temp->next=NewNode;
+}
+```
+## Delete At Begin
+```cpp
+void DeleteAtBegin(Node* &head,Node* &tail){
+    if(head == NULL){
+        cout << "List is Empty.." << endl;
+        return;
+    }
+    if(head == tail){
+        Node* temp = head;
+        head=NULL;
+        tail=NULL;
+        cout << "Deleted last element: " << temp->data << endl;
+        free(temp);
+        return;
+    }
+    Node* temp = head;
+    cout << "Deleted: " << temp->data << endl;
+    head=head->next;
+    head->prev=NULL;
+    free(temp);
+}
+```
+
+## Delete At End
+```cpp
+void DeleteAtEnd(Node* &head,Node* &tail){
+    if(tail == NULL){
+        cout << "List is Empty.." << endl;
+        return;
+    }
+    if(head == tail){
+        Node* temp = head;
+        head=NULL;
+        tail=NULL;
+        cout << "Deleted last element: " << temp->data << endl;
+        free(temp);
+        return;
+    }
+    Node* temp = tail;
+    cout << "Deleted: " << temp->data << endl;
+    tail=tail->prev;
+    tail->next=NULL;
+    free(temp);
+}
+```
+## Delete At Position
+```cpp
+void DeleteAtPos(Node* &head,Node* &tail,int pos){
+    if(pos<=1){
+        DeleteAtBegin(head,tail);
+        return;
+    }
+    Node* temp = head;
+    int count=1;
+    while (count < pos-1)
+    {
+       temp=temp->next;
+       count++;
+    }
+
+    if(temp==NULL || temp->next->next == NULL){
+        DeleteAtEnd(head,tail);
+        return;
+    }
+
+    Node* temp2=temp->next;
+    cout << "Deleted: " << temp2->data << endl;
+    temp->next=temp2->next;
+    temp->next->prev=temp;
+    free(temp2);
 }
 ```
